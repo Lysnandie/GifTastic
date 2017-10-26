@@ -1,10 +1,29 @@
 $(document).ready(function(){
 
 //arary of tvshows
-//var tvShows = ["martin", "empire", "fresh prince", "scandal", "queen sugar", "being mary jane", "family matters"]
+var tvShows = ["Martin", "Empire", "Fresh Prince", "Scandal", "Queen Sugar", "Being Mary Jane", "Family Matters"];
+
+function renderButtons(){
+
+  $("#gifs").html("");
+
+  for(var i =0; i < tvShows.length; i++){
+
+    var attr = $("<button>");
+
+    attr.addClass("tvShow");
+
+    attr.attr("data-name", tvShows[i]);
+
+    attr.text(movies[i]);
+
+    $("#gifs").append(attr);
+  }
+}
+
 
 //On click for all buttons
-$("button").on("click", function() {
+$("#button").on("click", function() {
 
 var tvShows = $(this).attr("data-show");
 
