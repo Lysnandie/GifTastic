@@ -23,7 +23,7 @@ $(document).ready(function(){
       a.text(shows[i]);
 
       //add buttons to gif div
-      $("gifs-here").append(a);
+      $("#gifs-here").append(a);
     }
   }
 
@@ -43,10 +43,6 @@ $(document).ready(function(){
 function gifs() {
   var tvShows = $(this).attr("data-name");
 
-
-  //giphy apiKey
-  //var APIKey = "&api_key=dc6zaTOxFJmzC&limit=10";
-
   //giphyURL
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + shows + "&api_key=0vhMQ7uc2Ur2tZjwl9A4bTLywDCAaxpo&limit=10";
 
@@ -55,27 +51,27 @@ function gifs() {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).done(function(response){
+    }).done(function(response){
 
-  var results = response.data;
+      var results = response.data;
 
-  for (var i=0; i < results.length; i++) {
+      for (var i=0; i < results.length; i++) {
 
-    var showDiv = $("<div>");
+        var showDiv = $("<div>");
 
-    var rating = results [i].rating;
+        var rating = results [i].rating;
 
-    var p = $("<p>").text("rating: " + rating);
+        var p = $("<p>").text("rating: " + rating);
 
-    var showImage = $("<img>");
+        var showImage = $("<img>");
 
-    showImage.attr("src", results[i].images.fixed_height.url);
+        showImage.attr("src", results[i].images.fixed_height.url);
 
-    showDiv.append(p);
-    showDiv.append(showImage);
+        showDiv.append(p);
+        showDiv.append(showImage);
 
-    $("#gifs-here").prepend(showDiv);
-
-});
-
+        $("#gifs-here").prepend(showDiv);
+      }
+    });
+  }
 });
